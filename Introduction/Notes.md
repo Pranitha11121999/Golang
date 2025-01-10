@@ -75,3 +75,18 @@ Golang stands out due to its:
 - Strong performance and scalability for modern, high-concurrency applications.
 
 While Java and Python are great for specific use cases, Golang’s efficiency and developer-friendly features make it a strong contender for applications requiring high performance and scalability.
+
+
+Article that helps to give more insights:-
+https://www.reddit.com/r/golang/comments/70v2eg/does_it_make_sense_for_a_company_like_uber_to_use/
+It performs significantly faster than Ruby and Python (8x would not be surprising), with significantly lower memory overhead (~1/4 the memory for similar programs). Static typing makes it a little less quick to produce code, but you need significantly fewer tests, since a lot of common mistakes are caught by the compiler, so you save some productivity there. Go also has real multithreading, so your deployment is significantly simplified - you don't need multiple processes to use multiple cores. (Addendum about Python - many of python's libraries are actually written in C, which makes them pretty damn fast, but that doesn't hold for application code that you or I write).
+
+It performs slightly slower than Java (somewhere between being almost on par down to maybe 50% the speed depending on the specific code), however, memory-wise, go uses about 1/4 the memory of Java, which can make a huge difference for the size of machines you need... it also means that java's improved garbage collector loses a lot of its benefits because it has to collect so much more memory. Go also has multi-threaded support built into the core of the language, which means it can be easier to use Go in a multithreaded way in some circumstances.
+
+Javascript (Node) is basically in the same boat as python and ruby. Slower, more memory. Node still doesn't have multithreaded support, and their blocking I/O magic requires callback hell.
+
+C/C++ are 2-3 times as fast as Go, but require manual memory management, are significantly less productive, and you have to worry about critical security issues due to buffer overflows etc. Basically no one should be writing code in these languages anymore for any application exposed to the internet.
+
+Rust is similar to C/C++ in speed. It has a lot more cognitive overhead than Go due to its built-in safety vs. race conditions and its non-gc automatic memory management. That being said, when you need the ultimate in safety and speed, and are willing to spend some more time getting there, Rust is what you should choose.
+
+I won't go into functional languages or older ML-style languages such as Haskel or Elixir since I'm not that familiar with them. But that's honestly the biggest knock against them - they just don't get developer mindshare and thus choosing them means that you'll always be limited in who you can hire / who can contribute.
